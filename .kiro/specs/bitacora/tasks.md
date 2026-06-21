@@ -1,4 +1,4 @@
-# Implementation Plan: Bitácora
+# Implementation Plan: Bitacora
 
 ## Overview
 
@@ -53,8 +53,8 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Return 401 JSON for unauthenticated API requests
     - _Requirements: 1.3, 1.4_
 
-- [ ] 3. Core utility libraries
-  - [-] 3.1 Implement URL normalizer
+- [x] 3. Core utility libraries
+  - [x] 3.1 Implement URL normalizer
     - Create `src/lib/normalize-url.ts`
     - Use `normalize-url` package with options: strip fragment, strip www, remove trailing slash, sort query params, remove default port
     - Implement `extractDomain()` from URL
@@ -67,7 +67,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Test that URLs differing only in protocol case, trailing slash, default port, or fragment produce same normalized form
     - **Validates: Requirements 2.5, 2.6**
 
-  - [~] 3.3 Implement slug generator
+  - [x] 3.3 Implement slug generator
     - Create `src/lib/slugify.ts`
     - Convert to lowercase, replace spaces/special chars with hyphens, remove consecutive hyphens, trim hyphens
     - Handle unicode characters (transliterate common accented characters)
@@ -79,7 +79,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Test that for any input string, output is lowercase, only alphanumeric+hyphens, no leading/trailing hyphens
     - **Validates: Requirements 4.1, 5.1**
 
-  - [~] 3.5 Implement keyword extractor
+  - [x] 3.5 Implement keyword extractor
     - Create `src/lib/keywords.ts`
     - Implement tokenize: lowercase, remove punctuation, split on whitespace
     - Implement removeStopwords with English and Spanish stopword lists
@@ -95,18 +95,18 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Test output is 0–12 keywords, each > 3 characters, all lowercase, no punctuation, no stopwords
     - **Validates: Requirements 2.7, 2.8**
 
-  - [~] 3.7 Implement constants and utilities
+  - [x] 3.7 Implement constants and utilities
     - Create `src/lib/constants.ts` with block types, edge types, visibility options, stopword lists
     - Create `src/lib/utils.ts` with timestamp helpers, ID generation wrapper
     - _Requirements: referenced across multiple requirements_
 
-- [~] 4. Checkpoint — Foundation verification
+- [x] 4. Checkpoint — Foundation verification
   - Ensure all tests pass, ask the user if questions arise.
   - Verify database migration runs successfully
   - Verify seed script populates expected data
 
 - [ ] 5. Blocks CRUD API
-  - [~] 5.1 Implement link preview engine
+  - [x] 5.1 Implement link preview engine
     - Create `src/lib/preview.ts`
     - Fetch URL with timeout (5 seconds), parse HTML with cheerio or regex
     - Extract metadata in priority order: Open Graph → Twitter Cards → meta tags → HTML title → domain fallback
@@ -114,7 +114,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Return LinkPreview object; never throw — return partial data on failure
     - _Requirements: 2.3, 2.4_
 
-  - [~] 5.2 Implement blocks API — Create (POST /api/blocks)
+  - [x] 5.2 Implement blocks API — Create (POST /api/blocks)
     - Create `src/app/api/blocks/route.ts`
     - Accept CreateBlockInput: detect type (LINK if valid URL, otherwise TEXT)
     - For LINK: normalize URL, check duplicate, fetch preview, extract keywords from metadata
@@ -126,14 +126,14 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Return created block with tags and channels
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.9_
 
-  - [~] 5.3 Implement blocks API — List and Get
+  - [-] 5.3 Implement blocks API — List and Get
     - GET /api/blocks — return blocks paginated (limit/offset query params), ordered by createdAt desc
     - Support query filters: type, isFavorite, isArchived, channelId, tagId
     - GET /api/blocks/[id] — return single block with tags, channels, and related edges
     - Create `src/app/api/blocks/[id]/route.ts`
     - _Requirements: 3.1, 3.2_
 
-  - [~] 5.4 Implement blocks API — Update and Delete
+  - [-] 5.4 Implement blocks API — Update and Delete
     - PATCH /api/blocks/[id] — update allowed fields (title, content, note, isFavorite, isArchived), update timestamp
     - Re-extract keywords if content fields changed, re-trigger graph edge generation
     - DELETE /api/blocks/[id] — cascade delete channel_blocks, block_tags, graph_edges referencing block
@@ -145,19 +145,19 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - **Validates: Requirements 3.4**
 
 - [ ] 6. Collections and Channels API
-  - [~] 6.1 Implement collections API
+  - [-] 6.1 Implement collections API
     - Create `src/app/api/collections/route.ts` — POST (create with slug), GET (list with channel counts)
     - Create `src/app/api/collections/[id]/route.ts` — PATCH (update fields), DELETE (disassociate channels)
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
 
-  - [~] 6.2 Implement channels API
+  - [-] 6.2 Implement channels API
     - Create `src/app/api/channels/route.ts` — POST (create with slug, optional collectionId), GET (list with block counts)
     - Create `src/app/api/channels/[id]/route.ts` — PATCH (update), DELETE
     - Create `src/app/api/channels/[id]/blocks/route.ts` — POST (add block with position), DELETE (remove block)
     - Enforce unique channel+block constraint, return 409 on duplicate
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6_
 
-  - [~] 6.3 Implement tags API
+  - [-] 6.3 Implement tags API
     - Create `src/app/api/tags/route.ts` — POST (find-or-create by slug), GET (list with block counts)
     - Create `src/app/api/tags/[slug]/route.ts` — GET (tag detail with blocks)
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
