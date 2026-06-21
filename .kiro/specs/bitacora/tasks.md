@@ -7,7 +7,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
 ## Tasks
 
 - [ ] 1. Project setup and configuration
-  - [-] 1.1 Initialize Next.js project with TypeScript, Tailwind CSS, and ESLint
+  - [x] 1.1 Initialize Next.js project with TypeScript, Tailwind CSS, and ESLint
     - Run `npx create-next-app@latest` with TypeScript and Tailwind enabled
     - Configure `tsconfig.json` path aliases (`@/` pointing to `src/`)
     - Install core dependencies: `drizzle-orm`, `@libsql/client`, `nanoid`, `bcryptjs`, `normalize-url`
@@ -16,14 +16,14 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Create `drizzle.config.ts` pointing to Turso
     - _Requirements: 16.1, 16.2_
 
-  - [~] 1.2 Define database schema with Drizzle ORM
+  - [x] 1.2 Define database schema with Drizzle ORM
     - Create `src/db/schema.ts` with all 8 tables: users, collections, channels, blocks, channelBlocks, tags, blockTags, graphEdges
     - Define all columns, types, defaults, foreign keys, and unique indexes per the design document
     - Create `src/db/index.ts` with Turso client initialization and Drizzle instance export
     - Run `drizzle-kit generate` to create initial migration
     - _Requirements: 16.1, 16.2_
 
-  - [~] 1.3 Create seed data script
+  - [-] 1.3 Create seed data script
     - Create `src/db/seed.ts` using tsx
     - Seed initial collections: Doctorado, Portfolio, Jarvis, Hackathons, Ciberseguridad, Música, Clientes, Investigación ambiental
     - Seed initial channels: Inbox, Read Later, AI Tools, Tesis, Forecasting, DePIN, Sensores, Visual Inspiration, Matemáticas, GitHub Repos, Articles, Videos
