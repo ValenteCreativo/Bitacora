@@ -11,6 +11,7 @@ import { eq, or } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import BlockActions from "@/components/blocks/BlockActions";
+import AddToChannel from "@/components/blocks/AddToChannel";
 
 export const dynamic = "force-dynamic";
 
@@ -247,24 +248,12 @@ export default async function BlockDetailPage({
         )}
 
         {/* Channels */}
-        {blockChannels.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-              Channels
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {blockChannels.map((channel) => (
-                <Link
-                  key={channel.id}
-                  href={`/app/c/${channel.slug}`}
-                  className="inline-block px-3 py-1.5 text-sm bg-blue-50 text-blue-700 rounded-md hover:bg-blue-100 transition-colors"
-                >
-                  {channel.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="mb-8">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            Channels
+          </h2>
+          <AddToChannel blockId={id} currentChannels={blockChannels} />
+        </div>
 
         {/* Keywords */}
         {keywords.length > 0 && (
