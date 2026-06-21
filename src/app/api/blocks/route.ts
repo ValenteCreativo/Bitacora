@@ -10,6 +10,7 @@ import { isValidUrl, generateId, now } from "@/lib/utils";
 import { normalizeUrl, extractDomain } from "@/lib/normalize-url";
 import { extractKeywords } from "@/lib/keywords";
 import { slugify } from "@/lib/slugify";
+import { suggestChannels, suggestTags } from "@/lib/suggestions";
 import { BLOCK_TYPES } from "@/lib/constants";
 import { eq, desc, and, sql, max } from "drizzle-orm";
 
@@ -207,12 +208,22 @@ export async function POST(request: Request) {
           .where(eq(channelBlocks.blockId, blockId))
       : [];
 
+    // Generate auto-categorization suggestions from keywords
+    const [suggestedChannels, suggestedTags] = await Promise.all([
+      suggestChannels(extractedKeywords),
+      suggestTags(extractedKeywords),
+    ]);
+
     return Response.json(
       {
         ...createdBlock,
         extractedKeywords,
         tags: createdTags,
         channels: blockChannels,
+        suggestions: {
+          channels: suggestedChannels,
+          tags: suggestedTags,
+        },
         isFavorite: Boolean(createdBlock.isFavorite),
         isArchived: Boolean(createdBlock.isArchived),
       },
