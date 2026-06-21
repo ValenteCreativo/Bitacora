@@ -15,7 +15,7 @@ export default function MobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white border-t border-slate-200">
+    <nav className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-[#faf7f2] border-t border-[#e8dfd2]">
       <div className="flex items-center justify-around h-16 px-2">
         {navItems.map((item) => {
           const isActive = pathname.startsWith(item.href);
@@ -25,11 +25,11 @@ export default function MobileNav() {
               href={item.href}
               className={`flex flex-col items-center gap-1 px-2 py-1 text-xs font-medium transition-colors ${
                 isActive
-                  ? "text-slate-900"
-                  : "text-slate-500 hover:text-slate-700"
+                  ? "text-[#2c2416]"
+                  : "text-[#8b775b] hover:text-[#5c4a32]"
               }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-slate-900" : "text-slate-400"}`} />
+              <item.icon className={`w-5 h-5 ${isActive ? "text-[#2c2416]" : "text-[#b8a88e]"}`} />
               {item.label}
             </Link>
           );
@@ -38,8 +38,6 @@ export default function MobileNav() {
     </nav>
   );
 }
-
-// Inline SVG icon components (matching Sidebar icons)
 
 function InboxIcon({ className }: { className?: string }) {
   return (

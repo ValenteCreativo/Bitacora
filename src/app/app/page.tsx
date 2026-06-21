@@ -92,32 +92,19 @@ export default async function DashboardPage() {
   return (
     <div>
       {/* Quick Capture callout */}
-      <div className="mb-8 bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+      <div className="mb-8 rounded-lg border border-[#e8dfd2] bg-[#faf7f2] p-6 shadow-sm">
         <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
-            <svg
-              className="w-5 h-5 text-blue-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
+          <div className="w-10 h-10 rounded-lg bg-[#2c2416]/5 flex items-center justify-center shrink-0">
+            <span className="text-lg">⚓</span>
           </div>
           <div>
-            <h2 className="text-base font-semibold text-gray-900 mb-1">
+            <h2 className="font-serif text-base font-semibold text-[#2c2416] mb-1">
               Quick Capture
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#8b775b]">
               Paste a link or write a note. Use the{" "}
-              <kbd className="px-1.5 py-0.5 text-xs bg-gray-100 border border-gray-200 rounded">+</kbd>{" "}
-              button or press it from anywhere.
+              <kbd className="px-1.5 py-0.5 text-xs bg-[#f5f0e8] border border-[#d4c9b8] rounded font-mono">+</kbd>{" "}
+              button from anywhere.
             </p>
           </div>
         </div>
@@ -127,30 +114,30 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-3 gap-4 mb-8">
         <Link
           href="/app/inbox"
-          className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center hover:border-gray-200 hover:shadow-md transition-all"
+          className="rounded-lg border border-[#e8dfd2] bg-[#faf7f2] p-4 text-center hover:border-[#d4c9b8] hover:shadow-md transition-all"
         >
-          <p className="text-2xl font-bold text-gray-900">{totalBlocks}</p>
-          <p className="text-xs text-gray-500 mt-1">Blocks</p>
+          <p className="font-serif text-2xl font-bold text-[#2c2416]">{totalBlocks}</p>
+          <p className="text-xs text-[#8b775b] mt-1">Blocks</p>
         </Link>
         <Link
           href="/app/collections"
-          className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center hover:border-gray-200 hover:shadow-md transition-all"
+          className="rounded-lg border border-[#e8dfd2] bg-[#faf7f2] p-4 text-center hover:border-[#d4c9b8] hover:shadow-md transition-all"
         >
-          <p className="text-2xl font-bold text-gray-900">{totalCollections}</p>
-          <p className="text-xs text-gray-500 mt-1">Collections</p>
+          <p className="font-serif text-2xl font-bold text-[#2c2416]">{totalCollections}</p>
+          <p className="text-xs text-[#8b775b] mt-1">Collections</p>
         </Link>
         <Link
           href="/app/channels"
-          className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center hover:border-gray-200 hover:shadow-md transition-all"
+          className="rounded-lg border border-[#e8dfd2] bg-[#faf7f2] p-4 text-center hover:border-[#d4c9b8] hover:shadow-md transition-all"
         >
-          <p className="text-2xl font-bold text-gray-900">{totalChannels}</p>
-          <p className="text-xs text-gray-500 mt-1">Channels</p>
+          <p className="font-serif text-2xl font-bold text-[#2c2416]">{totalChannels}</p>
+          <p className="text-xs text-[#8b775b] mt-1">Channels</p>
         </Link>
       </div>
 
       {/* Recent blocks */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+        <h2 className="font-serif text-lg font-semibold text-[#2c2416] mb-4">
           Recent Blocks
         </h2>
         <BlockGrid

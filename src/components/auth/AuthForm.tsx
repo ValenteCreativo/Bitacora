@@ -37,11 +37,11 @@ export function AuthForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="email"
-          className="text-sm font-medium text-slate-700 dark:text-slate-300"
+          className="text-xs font-medium uppercase tracking-wider text-[#8b775b]"
         >
           Email
         </label>
@@ -53,14 +53,14 @@ export function AuthForm() {
           placeholder="you@example.com"
           required
           autoComplete="email"
-          className="rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-slate-500 dark:focus:ring-slate-800"
+          className="rounded-md border border-[#d4c9b8] bg-white px-4 py-2.5 text-sm text-[#2c2416] placeholder:text-[#b8a88e] focus:border-[#8b775b] focus:outline-none focus:ring-2 focus:ring-[#8b775b]/20 transition-all"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="password"
-          className="text-sm font-medium text-slate-700 dark:text-slate-300"
+          className="text-xs font-medium uppercase tracking-wider text-[#8b775b]"
         >
           Password
         </label>
@@ -72,12 +72,12 @@ export function AuthForm() {
           placeholder="••••••••"
           required
           autoComplete="current-password"
-          className="rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-slate-500 dark:focus:ring-slate-800"
+          className="rounded-md border border-[#d4c9b8] bg-white px-4 py-2.5 text-sm text-[#2c2416] placeholder:text-[#b8a88e] focus:border-[#8b775b] focus:outline-none focus:ring-2 focus:ring-[#8b775b]/20 transition-all"
         />
       </div>
 
       {error && (
-        <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+        <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-md px-3 py-2" role="alert">
           {error}
         </p>
       )}
@@ -85,7 +85,7 @@ export function AuthForm() {
       <button
         type="submit"
         disabled={loading}
-        className="mt-2 flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+        className="mt-1 flex items-center justify-center rounded-md bg-[#2c2416] px-4 py-2.5 text-sm font-medium text-[#f5f0e8] transition-all hover:bg-[#3d3424] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -95,24 +95,13 @@ export function AuthForm() {
               fill="none"
               aria-hidden="true"
             >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-              />
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
-            Signing in…
+            Setting sail…
           </span>
         ) : (
-          "Sign in"
+          "Set Sail"
         )}
       </button>
     </form>

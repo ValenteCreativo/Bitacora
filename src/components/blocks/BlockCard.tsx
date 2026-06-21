@@ -39,7 +39,7 @@ export function BlockCard({ block }: { block: Block }) {
   return (
     <Link
       href={`/app/b/${block.id}`}
-      className="block border border-gray-200 rounded-lg bg-white hover:shadow-md transition-shadow"
+      className="block border border-[#e8dfd2] rounded-lg bg-[#faf7f2] hover:shadow-md hover:border-[#d4c9b8] transition-all"
     >
       {/* Image thumbnail for blocks with imageUrl */}
       {block.imageUrl && (
@@ -52,20 +52,20 @@ export function BlockCard({ block }: { block: Block }) {
 
       <div className="p-4">
         {/* Title */}
-        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+        <h3 className="text-sm font-medium text-[#2c2416] line-clamp-2">
           {displayTitle}
         </h3>
 
         {/* Description preview (for LINK blocks or blocks with description) */}
         {isLink && descriptionPreview && (
-          <p className="mt-1 text-xs text-gray-500 line-clamp-2">
+          <p className="mt-1 text-xs text-[#8b775b] line-clamp-2">
             {descriptionPreview}
           </p>
         )}
 
         {/* Content preview for TEXT blocks */}
         {!isLink && block.content && (
-          <p className="mt-1 text-xs text-gray-500 line-clamp-2">
+          <p className="mt-1 text-xs text-[#8b775b] line-clamp-2">
             {truncate(block.content, 100)}
           </p>
         )}
@@ -82,7 +82,7 @@ export function BlockCard({ block }: { block: Block }) {
                 className="w-3 h-3 rounded-sm"
               />
             )}
-            <span className="text-xs text-gray-500">{block.domain}</span>
+            <span className="text-xs text-[#b8a88e]">{block.domain}</span>
           </div>
         )}
 
@@ -92,7 +92,7 @@ export function BlockCard({ block }: { block: Block }) {
             {block.tags.map((tag) => (
               <span
                 key={tag.id}
-                className="text-xs bg-gray-100 text-gray-600 rounded-full px-2 py-0.5"
+                className="text-xs bg-[#f5f0e8] text-[#8b775b] rounded-full px-2 py-0.5 border border-[#e8dfd2]"
               >
                 {tag.name}
               </span>
@@ -101,7 +101,7 @@ export function BlockCard({ block }: { block: Block }) {
         )}
 
         {/* Relative date */}
-        <p className="mt-2 text-xs text-gray-400">
+        <p className="mt-2 text-xs text-[#b8a88e]">
           {formatRelativeTime(block.createdAt)}
         </p>
       </div>
