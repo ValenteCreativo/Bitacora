@@ -6,7 +6,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
 
 ## Tasks
 
-- [ ] 1. Project setup and configuration
+- [x] 1. Project setup and configuration
   - [x] 1.1 Initialize Next.js project with TypeScript, Tailwind CSS, and ESLint
     - Run `npx create-next-app@latest` with TypeScript and Tailwind enabled
     - Configure `tsconfig.json` path aliases (`@/` pointing to `src/`)
@@ -23,7 +23,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Run `drizzle-kit generate` to create initial migration
     - _Requirements: 16.1, 16.2_
 
-  - [-] 1.3 Create seed data script
+  - [x] 1.3 Create seed data script
     - Create `src/db/seed.ts` using tsx
     - Seed initial collections: Doctorado, Portfolio, Jarvis, Hackathons, Ciberseguridad, Música, Clientes, Investigación ambiental
     - Seed initial channels: Inbox, Read Later, AI Tools, Tesis, Forecasting, DePIN, Sensores, Visual Inspiration, Matemáticas, GitHub Repos, Articles, Videos
@@ -31,22 +31,22 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Generate IDs with nanoid, slugs with slugify function
     - _Requirements: 16.3, 16.4, 16.5_
 
-- [ ] 2. Authentication system
-  - [~] 2.1 Implement auth library module
+- [x] 2. Authentication system
+  - [x] 2.1 Implement auth library module
     - Create `src/lib/auth.ts` with hashPassword, verifyPassword, createSession, validateSession, destroySession functions
     - Use bcryptjs for password hashing (10 salt rounds)
     - Implement session as signed JWT or encrypted JSON stored in HTTP-only cookie
     - Implement `ensureAdminExists()` that checks for users and creates admin from env vars if none exist
     - _Requirements: 1.1, 1.5, 1.6, 1.7_
 
-  - [~] 2.2 Implement auth API routes
+  - [x] 2.2 Implement auth API routes
     - Create `src/app/api/auth/login/route.ts` — POST validates credentials, creates session cookie, returns user data
     - Create `src/app/api/auth/logout/route.ts` — POST destroys session cookie
     - Create `src/app/api/auth/me/route.ts` — GET returns current user from session
     - Return 401 for invalid credentials with generic message (not revealing which field is wrong)
     - _Requirements: 1.1, 1.2, 1.5_
 
-  - [~] 2.3 Implement middleware for route protection
+  - [x] 2.3 Implement middleware for route protection
     - Create `src/middleware.ts` matching `/app/:path*`, `/settings`, and `/api/:path*` (excluding `/api/auth/*`)
     - Validate session cookie on each request
     - Redirect unauthenticated page requests to `/login`
@@ -54,7 +54,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - _Requirements: 1.3, 1.4_
 
 - [ ] 3. Core utility libraries
-  - [~] 3.1 Implement URL normalizer
+  - [-] 3.1 Implement URL normalizer
     - Create `src/lib/normalize-url.ts`
     - Use `normalize-url` package with options: strip fragment, strip www, remove trailing slash, sort query params, remove default port
     - Implement `extractDomain()` from URL
