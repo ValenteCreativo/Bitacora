@@ -12,6 +12,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import BlockActions from "@/components/blocks/BlockActions";
 
+export const dynamic = "force-dynamic";
+
 export default async function BlockDetailPage({
   params,
 }: {

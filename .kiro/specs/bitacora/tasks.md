@@ -290,8 +290,8 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Query blocks LEFT JOIN channel_blocks WHERE channel_blocks.id IS NULL
     - _Requirements: 12.3_
 
-- [ ] 13. Graph visualization
-  - [-] 13.1 Implement Graph Canvas component
+- [x] 13. Graph visualization
+  - [x] 13.1 Implement Graph Canvas component
     - Install `react-force-graph-2d` (lighter than 3D for MVP)
     - Create `src/components/graph/GraphCanvas.tsx` — client component
     - Fetch graph data from GET /api/graph
@@ -300,22 +300,22 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Node labels: title for blocks, name for channels/tags/collections
     - _Requirements: 8.1, 8.2, 8.3_
 
-  - [-] 13.2 Implement Graph Side Panel
+  - [x] 13.2 Implement Graph Side Panel
     - Create `src/components/graph/GraphSidePanel.tsx`
     - On node click: show panel with node type, title/name, metadata
     - List connected nodes with edge reasons
     - Link to navigate to node's detail page
     - _Requirements: 8.4_
 
-  - [-] 13.3 Create Graph page with filters
+  - [x] 13.3 Create Graph page with filters
     - Create `src/app/app/graph/page.tsx`
     - Add filter controls: collection dropdown, channel dropdown, tag dropdown, minimum weight slider
     - Pass filters as query params to GET /api/graph
     - Re-render graph when filters change
     - _Requirements: 8.5, 8.6_
 
-- [ ] 14. Search and remaining pages
-  - [-] 14.1 Create Search page
+- [x] 14. Search and remaining pages
+  - [x] 14.1 Create Search page
     - Create `src/app/app/search/page.tsx`
     - Create `src/components/search/SearchBar.tsx`
     - Input with debounced search (300ms)
@@ -330,20 +330,20 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Quick Capture prominently placed
     - _Requirements: 10.4_
 
-  - [-] 14.3 Create Settings page
+  - [x] 14.3 Create Settings page
     - Create `src/app/settings/page.tsx`
     - Display current user email and name
     - Protected route (middleware handles auth check)
     - _Requirements: 17.1, 17.2_
 
-- [~] 15. Checkpoint — UI verification
+- [x] 15. Checkpoint — UI verification
   - Ensure all tests pass, ask the user if questions arise.
   - Verify full capture flow works on mobile viewport
   - Verify graph renders with nodes and edges
   - Verify search returns grouped results
 
-- [ ] 16. Public pages and authentication UI
-  - [~] 16.1 Create Landing page
+- [x] 16. Public pages and authentication UI
+  - [x] 16.1 Create Landing page
     - Create `src/app/page.tsx` — public landing page
     - Present Bitácora's purpose: "Save first. Understand later."
     - Show features, tech stack mention, self-hostable message
@@ -351,7 +351,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Clean, editorial, calm design
     - _Requirements: 14.1, 14.2_
 
-  - [~] 16.2 Create Login page
+  - [x] 16.2 Create Login page
     - Create `src/app/login/page.tsx`
     - Create `src/components/auth/AuthForm.tsx`
     - Email + password form
@@ -367,13 +367,13 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Add filter for favorites view (GET /api/blocks?isFavorite=1)
     - _Requirements: 3.5, 3.6_
 
-  - [~] 17.2 Add PWA support
+  - [x] 17.2 Add PWA support
     - Create `public/manifest.json` with name "Bitácora", short_name "Bitácora", icons (192, 512), theme_color, display "standalone"
     - Add PWA icons to public/ (create placeholder SVG-based icons)
     - Add manifest link and theme-color meta tag to `src/app/layout.tsx`
     - _Requirements: 15.1, 15.2_
 
-  - [~] 17.3 Create README
+  - [x] 17.3 Create README
     - Write README.md presenting Bitácora as open-source self-hostable tool
     - Include sections: What is Bitácora, Features, Tech Stack, Quick Start, Environment Variables, Database Setup, Deploy to Vercel, Deploy Locally, License
     - Use the guiding sentence: "Save first. Understand later."

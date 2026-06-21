@@ -3,6 +3,8 @@ import { collections, channels } from "@/db/schema";
 import { eq, sql } from "drizzle-orm";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function CollectionsPage() {
   const collectionsWithCounts = await db
     .select({

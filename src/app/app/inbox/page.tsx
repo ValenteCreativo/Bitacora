@@ -3,6 +3,8 @@ import { blocks, channelBlocks, blockTags, tags } from "@/db/schema";
 import { sql, eq, isNull } from "drizzle-orm";
 import { BlockGrid } from "@/components/blocks/BlockGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function InboxPage() {
   // Fetch all blocks that are NOT associated with any channel
   const inboxBlocks = await db

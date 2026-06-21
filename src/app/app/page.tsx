@@ -4,6 +4,8 @@ import { sql, desc, eq } from "drizzle-orm";
 import Link from "next/link";
 import { BlockGrid } from "@/components/blocks/BlockGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   // Fetch quick stats
   const [blockCountResult] = await db

@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BlockGrid } from "@/components/blocks/BlockGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function ChannelDetailPage({
   params,
 }: {
