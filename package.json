@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx src/db/seed.ts"
+    "db:generate": "dotenv-cli -e .env.local -- drizzle-kit generate",
+    "db:migrate": "dotenv-cli -e .env.local -- drizzle-kit migrate",
+    "db:studio": "dotenv-cli -e .env.local -- drizzle-kit studio",
+    "db:seed": "dotenv-cli -e .env.local -- tsx src/db/seed.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
@@ -29,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
