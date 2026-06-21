@@ -360,8 +360,8 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Redirect to /app on success
     - _Requirements: 14.3, 1.1, 1.2_
 
-- [ ] 17. Polish features
-  - [~] 17.1 Implement Favorite and Archive functionality in UI
+- [x] 17. Polish features
+  - [x] 17.1 Implement Favorite and Archive functionality in UI
     - Add favorite/archive toggle buttons to BlockCard and Block Detail
     - PATCH /api/blocks/[id] with isFavorite or isArchived
     - Add filter for favorites view (GET /api/blocks?isFavorite=1)
@@ -380,7 +380,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - MIT License
     - _Requirements: referenced in product spec_
 
-- [~] 18. Final checkpoint — Full MVP verification
+- [x] 18. Final checkpoint — Full MVP verification
   - Ensure all tests pass, ask the user if questions arise.
   - Verify complete flow: login → save link → metadata extracted → keywords extracted → graph edges generated → view in graph
   - Verify mobile capture flow completes in under 10 seconds
