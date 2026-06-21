@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { name, description, color, icon } = body;
+    const { name, description, color, icon, visibility } = body;
 
     if (!name || name.trim().length === 0) {
       return Response.json(
@@ -45,6 +45,7 @@ export async function POST(request: Request) {
       description: description || null,
       color: color || null,
       icon: icon || null,
+      visibility: visibility || "PRIVATE",
       createdById: session.userId,
       createdAt: timestamp,
       updatedAt: timestamp,

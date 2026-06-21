@@ -3,6 +3,7 @@ import { collections, channels, channelBlocks } from "@/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import CollectionDetailClient from "@/components/taxonomy/CollectionDetailClient";
 
 export const dynamic = "force-dynamic";
 
@@ -44,38 +45,23 @@ export default async function CollectionDetailPage({
       {/* Back navigation */}
       <Link
         href="/app/collections"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6"
+        className="inline-flex items-center gap-1 text-sm text-[#8b775b] hover:text-[#2c2416] transition-colors mb-6"
       >
         ← Collections
       </Link>
 
-      {/* Collection header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          {collection.color && (
-            <div
-              className="w-4 h-4 rounded-full shrink-0"
-              style={{ backgroundColor: collection.color }}
-            />
-          )}
-          <h1 className="text-2xl font-bold text-gray-900">
-            {collection.name}
-          </h1>
-        </div>
-        {collection.description && (
-          <p className="text-base text-gray-600">{collection.description}</p>
-        )}
-      </div>
+      {/* Client component for header + edit/delete */}
+      <CollectionDetailClient collection={collection} />
 
       {/* Channels list */}
-      <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+      <h2 className="text-sm font-semibold text-[#8b775b] uppercase tracking-wider mb-4">
         Channels
       </h2>
 
       {collectionChannels.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-          <h3 className="text-sm font-medium text-gray-900">No channels yet</h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <h3 className="text-sm font-medium text-[#2c2416]">No channels yet</h3>
+          <p className="mt-1 text-sm text-[#8b775b]">
             This collection doesn&apos;t have any channels.
           </p>
         </div>
@@ -85,17 +71,17 @@ export default async function CollectionDetailPage({
             <Link
               key={channel.id}
               href={`/app/c/${channel.slug}`}
-              className="block bg-white rounded-xl border border-gray-100 shadow-sm p-5 hover:border-gray-200 hover:shadow-md transition-all"
+              className="block bg-white rounded-xl border border-[#e8dfd2] shadow-sm p-5 hover:border-[#8b775b]/50 hover:shadow-md transition-all"
             >
-              <h3 className="text-base font-semibold text-gray-900 mb-1">
+              <h3 className="text-base font-semibold text-[#2c2416] mb-1">
                 {channel.name}
               </h3>
               {channel.description && (
-                <p className="text-sm text-gray-500 line-clamp-2 mb-2">
+                <p className="text-sm text-[#8b775b] line-clamp-2 mb-2">
                   {channel.description}
                 </p>
               )}
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[#8b775b]/70">
                 {channel.blockCount}{" "}
                 {channel.blockCount === 1 ? "block" : "blocks"}
               </p>

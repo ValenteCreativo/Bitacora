@@ -32,7 +32,7 @@ export async function PATCH(
     }
 
     const body = await request.json();
-    const { name, description, color, icon } = body;
+    const { name, description, color, icon, visibility } = body;
 
     const updates: Record<string, unknown> = {
       updatedAt: now(),
@@ -74,6 +74,12 @@ export async function PATCH(
     }
     if (icon !== undefined) {
       updates.icon = icon || null;
+    }
+    if (visibility !== undefined) {
+      const validVisibilities = ["PRIVATE", "PUBLIC", "UNLISTED"];
+      if (validVisibilities.includes(visibility)) {
+        updates.visibility = visibility;
+      }
     }
 
     await db

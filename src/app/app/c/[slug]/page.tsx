@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BlockGrid } from "@/components/blocks/BlockGrid";
+import ChannelDetailClient from "@/components/taxonomy/ChannelDetailClient";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +45,12 @@ export default async function ChannelDetailPage({
       collectionInfo = col;
     }
   }
+
+  // Fetch all collections for the edit form dropdown
+  const allCollections = await db
+    .select({ id: collections.id, name: collections.name })
+    .from(collections)
+    .orderBy(collections.name);
 
   // Fetch blocks in this channel
   const channelBlockRows = await db
@@ -116,27 +123,32 @@ export default async function ChannelDetailPage({
       {/* Back navigation */}
       <Link
         href="/app/channels"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6"
+        className="inline-flex items-center gap-1 text-sm text-[#8b775b] hover:text-[#2c2416] transition-colors mb-6"
       >
         ← Channels
       </Link>
 
       {/* Channel header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">
-          {channel.name}
-        </h1>
-        {channel.description && (
-          <p className="text-base text-gray-600 mb-2">{channel.description}</p>
-        )}
-        {collectionInfo && (
-          <Link
-            href={`/app/collections/${collectionInfo.slug}`}
-            className="inline-block text-sm text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            In {collectionInfo.name}
-          </Link>
-        )}
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="text-2xl font-serif font-bold text-[#2c2416] mb-1">
+              {channel.name}
+            </h1>
+            {channel.description && (
+              <p className="text-base text-[#8b775b] mb-2">{channel.description}</p>
+            )}
+            {collectionInfo && (
+              <Link
+                href={`/app/collections/${collectionInfo.slug}`}
+                className="inline-block text-sm text-[#8b775b] hover:text-[#2c2416] transition-colors"
+              >
+                In {collectionInfo.name}
+              </Link>
+            )}
+          </div>
+          <ChannelDetailClient channel={channel} collections={allCollections} />
+        </div>
       </div>
 
       {/* Block grid */}
