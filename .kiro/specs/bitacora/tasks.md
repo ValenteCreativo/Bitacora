@@ -230,8 +230,8 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Integrate into block creation flow — return suggestions in create response
     - _Requirements: 13.1, 13.2, 13.3, 13.4_
 
-- [ ] 10. Application layout and navigation
-  - [-] 10.1 Create app layout shell
+- [x] 10. Application layout and navigation
+  - [x] 10.1 Create app layout shell
     - Create `src/app/app/layout.tsx` — wraps all /app/* routes
     - Implement responsive container with sidebar for desktop, mobile nav for mobile
     - Create `src/components/layout/Sidebar.tsx` — fixed left nav with links: Inbox, Collections, Channels, Graph, Search, Settings
@@ -239,7 +239,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Add Quick Capture trigger button accessible from all app pages
     - _Requirements: 10.1, 10.2, 10.3, 10.4_
 
-  - [-] 10.2 Create Quick Capture component
+  - [x] 10.2 Create Quick Capture component
     - Create `src/components/blocks/QuickCapture.tsx` — modal or expandable input
     - Large text input that auto-detects URL vs text
     - Optional channel selector and tag input
@@ -248,21 +248,21 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Must work fast on mobile (< 10 seconds capture flow)
     - _Requirements: 2.1, 2.2, 13.3_
 
-- [ ] 11. Block display components
-  - [-] 11.1 Create Block Card component
+- [x] 11. Block display components
+  - [x] 11.1 Create Block Card component
     - Create `src/components/blocks/BlockCard.tsx`
     - Display: title, description preview (truncated), imageUrl (as background or thumbnail), domain with favicon, tags as pills, relative creation date
     - Differentiate LINK blocks (show favicon + domain) vs TEXT blocks (show content preview)
     - Click navigates to `/app/b/[id]`
     - _Requirements: 11.1, 11.3, 11.4_
 
-  - [-] 11.2 Create Block Grid component
+  - [x] 11.2 Create Block Grid component
     - Create `src/components/blocks/BlockGrid.tsx`
     - Responsive grid: 1 col mobile, 2 cols tablet, 3 cols desktop
     - Accept blocks array, render BlockCards
     - _Requirements: 11.1_
 
-  - [-] 11.3 Create Block Detail page
+  - [x] 11.3 Create Block Detail page
     - Create `src/app/app/b/[id]/page.tsx`
     - Fetch block with tags, channels, and related blocks (from graph edges)
     - Display all metadata, note, edit capability
@@ -270,28 +270,28 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Actions: favorite, archive, add to channel, add tags, delete
     - _Requirements: 11.2, 3.2, 3.5, 3.6_
 
-- [ ] 12. Taxonomy views
-  - [~] 12.1 Create Collection pages
+- [x] 12. Taxonomy views
+  - [x] 12.1 Create Collection pages
     - Create `src/app/app/collections/page.tsx` — list all collections with channel counts and colors
     - Create `src/app/app/collections/[slug]/page.tsx` — show collection metadata + list of channels within it
     - _Requirements: 12.1, 4.2_
 
-  - [~] 12.2 Create Channel pages
+  - [x] 12.2 Create Channel pages
     - Create `src/app/app/channels/page.tsx` — list all channels
     - Create `src/app/app/c/[slug]/page.tsx` — show channel metadata + block grid of associated blocks
     - _Requirements: 12.2, 5.6_
 
-  - [~] 12.3 Create Tag view page
+  - [x] 12.3 Create Tag view page
     - Create `src/app/app/tags/[slug]/page.tsx` — show tag name + block grid of tagged blocks
     - _Requirements: 6.5_
 
-  - [~] 12.4 Create Inbox page
+  - [x] 12.4 Create Inbox page
     - Create `src/app/app/inbox/page.tsx` — fetch and display all blocks not in any channel
     - Query blocks LEFT JOIN channel_blocks WHERE channel_blocks.id IS NULL
     - _Requirements: 12.3_
 
 - [ ] 13. Graph visualization
-  - [~] 13.1 Implement Graph Canvas component
+  - [-] 13.1 Implement Graph Canvas component
     - Install `react-force-graph-2d` (lighter than 3D for MVP)
     - Create `src/components/graph/GraphCanvas.tsx` — client component
     - Fetch graph data from GET /api/graph
@@ -300,14 +300,14 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Node labels: title for blocks, name for channels/tags/collections
     - _Requirements: 8.1, 8.2, 8.3_
 
-  - [~] 13.2 Implement Graph Side Panel
+  - [-] 13.2 Implement Graph Side Panel
     - Create `src/components/graph/GraphSidePanel.tsx`
     - On node click: show panel with node type, title/name, metadata
     - List connected nodes with edge reasons
     - Link to navigate to node's detail page
     - _Requirements: 8.4_
 
-  - [~] 13.3 Create Graph page with filters
+  - [-] 13.3 Create Graph page with filters
     - Create `src/app/app/graph/page.tsx`
     - Add filter controls: collection dropdown, channel dropdown, tag dropdown, minimum weight slider
     - Pass filters as query params to GET /api/graph
@@ -315,7 +315,7 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - _Requirements: 8.5, 8.6_
 
 - [ ] 14. Search and remaining pages
-  - [~] 14.1 Create Search page
+  - [-] 14.1 Create Search page
     - Create `src/app/app/search/page.tsx`
     - Create `src/components/search/SearchBar.tsx`
     - Input with debounced search (300ms)
@@ -323,14 +323,14 @@ This plan implements the Bitácora knowledge harbor MVP in incremental phases. E
     - Show empty state with messaging when no results
     - _Requirements: 9.1, 9.2, 9.3_
 
-  - [~] 14.2 Create Dashboard page
+  - [x] 14.2 Create Dashboard page
     - Create `src/app/app/page.tsx` — main dashboard
     - Show recent blocks (last 10)
     - Show quick stats: total blocks, collections, channels
     - Quick Capture prominently placed
     - _Requirements: 10.4_
 
-  - [~] 14.3 Create Settings page
+  - [-] 14.3 Create Settings page
     - Create `src/app/settings/page.tsx`
     - Display current user email and name
     - Protected route (middleware handles auth check)
